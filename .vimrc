@@ -17,8 +17,8 @@ set nocompatible
 syntax on
 filetype indent on
 filetype plugin on
-set smartindent
-set autoindent
+set ai
+set si
 
 " tab width (tabs, not spaces!)
 set shiftwidth=4
@@ -44,7 +44,6 @@ nnoremap ? ?\v
 set nobackup
 set nowritebackup
 set noswapfile
-set undofile
 " save file whenever focus is lost
 au FocusLost * :wa
 
@@ -73,6 +72,12 @@ set ttyfast
 set backspace=indent,eol,start
 set laststatus=2
 set showtabline=2
+
+" better moving between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
 " line numbers relative to current line rather than absolute
 set relativenumber

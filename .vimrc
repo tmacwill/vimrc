@@ -8,6 +8,9 @@
 " 	,c<space>: Toggle comments
 " 	,l: Toggle NERDTree
 " 	,a: ack
+" 	,t: new tab
+" 	,w: close tab
+"   jj: enter normal mode
 """""""""""""""""""""""""""""""""
 
 " long live vim
@@ -44,6 +47,7 @@ nnoremap ? ?\v
 set nobackup
 set nowritebackup
 set noswapfile
+
 " save file whenever focus is lost
 au FocusLost * :wa
 
@@ -53,25 +57,39 @@ if has('autocmd')
   autocmd GUIEnter * set vb t_vb=
 endif
 
-" text options
-colorscheme desert
-set ruler
+" font options
+set background=dark
+colorscheme solarized
 set gfn=Inconsolata:h14
+
+" word wrapping
 set wm=2
 set tw=120
 set wrap
 
+" keep at least 5 lines below the cursor
+set scrolloff=5
+
 " window options
 set showmode
 set showcmd
-set scrolloff=3
-set hidden
-set wildmenu
-set wildmode=list:longest
+set ruler
 set ttyfast
 set backspace=indent,eol,start
 set laststatus=2
+
+" always show tab line to avoid annoying resize
 set showtabline=2
+
+" enable mouse support
+set mouse=a
+
+" better tab completion on commands
+set wildmenu
+set wildmode=list:longest
+
+" close buffer when tab is closed
+set nohidden
 
 " better moving between windows
 map <C-j> <C-W>j
@@ -84,10 +102,14 @@ set relativenumber
 
 " shortcuts to common commands
 let mapleader = ","
-nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>l :NERDTreeToggle<CR>
 nnoremap <leader>a :Ack 
+nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>w :tabclose<CR>
+
+" ; is better than :, and jj is better than ctrl-c
 nnoremap ; :
+inoremap jj <Esc>
 
 " since autochdir rarely works
 autocmd BufEnter * silent! lcd %:p:h

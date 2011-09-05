@@ -98,7 +98,7 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " line numbers relative to current line rather than absolute
-set relativenumber
+set number
 
 " shortcuts to common commands
 let mapleader = ","

@@ -113,4 +113,4 @@ nnoremap ; :
 inoremap jj <Esc>
 
 " since autochdir rarely works
-autocmd BufEnter * silent! lcd %:p:h
+" autocmd BufEnter * silent! lcd %:p:h

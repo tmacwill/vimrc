@@ -29,6 +29,9 @@ set tabstop=4
 set smarttab
 set noexpandtab
 
+" highlight characters longer than 120 lines
+match ErrorMsg '\%>120v.\+'
+
 " faster tab navigation
 nnoremap <S-tab> :tabprevious<CR>
 nnoremap <tab> :tabnext<CR>
@@ -60,13 +63,8 @@ endif
 
 " font options
 set background=dark
-colorscheme solarized
+colorscheme desert
 set gfn=Inconsolata:h14
-
-" word wrapping
-set wm=2
-set tw=120
-set wrap
 
 " keep at least 5 lines below the cursor
 set scrolloff=5
@@ -99,7 +97,7 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " line numbers relative to current line rather than absolute
-set number
+set relativenumber
 
 " shortcuts to common commands
 let mapleader = ","

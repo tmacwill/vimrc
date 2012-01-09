@@ -43,10 +43,6 @@ set clipboard=unnamed
 set incsearch
 set showcmd
 
-" default to extended regexes
-nnoremap / /\v
-nnoremap ? ?\v
-
 " disable backups
 set nobackup
 set nowritebackup
@@ -96,8 +92,8 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" line numbers relative to current line rather than absolute
-set relativenumber
+" line numbers
+set number
 
 " shortcuts to common commands
 let mapleader = ","

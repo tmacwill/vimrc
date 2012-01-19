@@ -8,9 +8,11 @@
 " 	,c<space>: Toggle comments
 " 	,l: Toggle NERDTree
 " 	,a: ack
+" 	,o: command-t open
+" 	,s: split window
 " 	,t: new tab
 " 	,w: close tab
-"   jj: enter normal mode
+"   kj: enter normal mode
 """""""""""""""""""""""""""""""""
 
 " long live vim
@@ -23,11 +25,11 @@ filetype plugin on
 set ai
 set si
 
-" tab width (tabs, not spaces!)
+" expand tabs to 4 spaces
 set shiftwidth=4
 set tabstop=4
 set smarttab
-set noexpandtab
+set expandtab
 
 " highlight characters longer than 120 lines
 match ErrorMsg '\%>120v.\+'
@@ -48,9 +50,6 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" save file whenever focus is lost
-au FocusLost * :wa
-
 " disable annoying beep on errors
 set noerrorbells
 if has('autocmd')
@@ -58,8 +57,9 @@ if has('autocmd')
 endif
 
 " font options
+let g:solarized_termcolors=256
 set background=dark
-colorscheme desert
+colorscheme solarized
 set gfn=Inconsolata:h14
 
 " keep at least 5 lines below the cursor
@@ -72,6 +72,7 @@ set ruler
 set ttyfast
 set backspace=indent,eol,start
 set laststatus=2
+set cursorline
 
 " always show tab line to avoid annoying resize
 set showtabline=2
@@ -92,6 +93,11 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" supertab config
+set ofu=syntaxcomplete#Complete
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
 " line numbers
 set number
 
@@ -99,12 +105,12 @@ set number
 let mapleader = ","
 nnoremap <leader>l :NERDTreeToggle<CR>
 nnoremap <leader>a :Ack 
+nnoremap <leader>o :CommandT<CR>
 nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>s :vsplit<CR>
 nnoremap <leader>w :tabclose<CR>
 
-" ; is better than :, and jj is better than ctrl-c
+" ; is better than :, and kj is better than ctrl-c
 nnoremap ; :
-inoremap jj <Esc>
-
-" since autochdir rarely works
-" autocmd BufEnter * silent! lcd %:p:h
+" also autosave when going to insert mode
+inoremap kj <Esc>:w<CR>

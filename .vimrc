@@ -57,9 +57,8 @@ if has('autocmd')
 endif
 
 " font options
-let g:solarized_termcolors=256
 set background=dark
-colorscheme solarized
+colorscheme jellybeans
 set gfn=Inconsolata:h14
 
 " keep at least 5 lines below the cursor
@@ -72,7 +71,6 @@ set ruler
 set ttyfast
 set backspace=indent,eol,start
 set laststatus=2
-set cursorline
 
 " always show tab line to avoid annoying resize
 set showtabline=2

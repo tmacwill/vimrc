@@ -6,8 +6,9 @@
 " Shortcuts:
 " 	; maps to :
 " 	,c<space>: Toggle comments
-" 	,l: Toggle NERDTree
 " 	,a: ack
+" 	,e: edit in new tab
+" 	,l: Toggle NERDTree
 " 	,o: command-t open
 " 	,s: split window
 " 	,t: new tab
@@ -24,6 +25,9 @@ filetype indent on
 filetype plugin on
 set ai
 set si
+
+" omg folding is the worst
+set nofoldenable
 
 " expand tabs to 4 spaces
 set shiftwidth=4
@@ -44,6 +48,8 @@ set clipboard=unnamed
 " searching options
 set incsearch
 set showcmd
+set ignorecase
+set smartcase
 
 " disable backups
 set nobackup
@@ -101,8 +107,9 @@ set number
 
 " shortcuts to common commands
 let mapleader = ","
-nnoremap <leader>l :NERDTreeToggle<CR>
 nnoremap <leader>a :Ack 
+nnoremap <leader>e :tabnew<CR>:CommandT<CR>
+nnoremap <leader>l :NERDTreeToggle<CR>
 nnoremap <leader>o :CommandT<CR>
 nnoremap <leader>t :tabnew<CR>
 nnoremap <leader>s :vsplit<CR>

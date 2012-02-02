@@ -1,19 +1,13 @@
 The Best .vimrc Ever (tm)
 ===
 
-Requirements:
----
-
-     * Ruby 1.8.7
-     * Vim?
-
-
 Installation:
 ---
 
-    mkdir .vim
+    yum -y install make ruby ruby-devel vim
+    mkdir ~/.vim
     git clone git://github.com/tmac721/vimrc.git ~/.vim
-    ln -s ~/.vim/.vimrc .vimrc
+    ln -s ~/.vim/.vimrc ~/.vimrc
     cd ~/.vim/ruby/command-t
     ruby extconf.rb
     make

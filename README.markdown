@@ -1,13 +1,8 @@
 The Best .vimrc Ever (tm)
-===
-
-Installation:
 ---
 
-    yum -y install make ruby ruby-devel vim
+## Installation:
+
     mkdir ~/.vim
     git clone git://github.com/tmac721/vimrc.git ~/.vim
     ln -s ~/.vim/.vimrc ~/.vimrc
-    cd ~/.vim/ruby/command-t
-    ruby extconf.rb
-    make

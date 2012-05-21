@@ -7,9 +7,9 @@
 " 	; maps to :
 " 	,c<space>: Toggle comments
 " 	,a: ack
-" 	,e: edit in new tab
+" 	,e: open file in new tab
 " 	,l: Toggle NERDTree
-" 	,o: command-t open
+" 	,o: open file
 " 	,s: split window
 " 	,t: new tab
 " 	,w: close tab
@@ -41,9 +41,6 @@ match ErrorMsg '\%>120v.\+'
 " faster tab navigation
 nnoremap <S-tab> :tabprevious<CR>
 nnoremap <tab> :tabnext<CR>
-
-" use system clipboard by default
-set clipboard=unnamed
 
 " searching options
 set incsearch
@@ -108,14 +105,19 @@ set number
 " shortcuts to common commands
 let mapleader = ","
 nnoremap <leader>a :Ack 
-nnoremap <leader>e :tabnew<CR>:CommandT<CR>
+nnoremap <leader>e :tabnew<CR>:CtrlP<CR>
 nnoremap <leader>l :NERDTreeToggle<CR>
-nnoremap <leader>o :CommandT<CR>
+nnoremap <leader>o :CtrlP<CR>
 nnoremap <leader>t :tabnew<CR>
 nnoremap <leader>s :vsplit<CR>
 nnoremap <leader>w :tabclose<CR>
 
 " ; is better than :, and kj is better than ctrl-c
 nnoremap ; :
+
 " also autosave when going to insert mode
 inoremap kj <Esc>:w<CR>
+
+" more logical vertical navigation
+nnoremap <silent> k gk
+nnoremap <silent> j gj

@@ -94,11 +94,6 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" supertab config
-set ofu=syntaxcomplete#Complete
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
 " line numbers
 set number
 

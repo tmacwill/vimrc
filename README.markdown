@@ -3,6 +3,7 @@ The Best .vimrc Ever (tm)
 
 ## Installation:
 
+    yum -y install make ruby ruby-devel vim
     mkdir ~/.vim
     git clone git://github.com/tmac721/vimrc.git ~/.vim
     ln -s ~/.vim/.vimrc ~/.vimrc
@@ -30,19 +31,19 @@ Other available (awesome) colorschemes:
 
 ## Shortcuts
 
-* ; maps to :
-* ,a: Ack from the current directory
-* ,c<space>: Toggle comments
-* ,e: Open file in new tab
-* ,l: Toggle NERDTree
-* ,ig: Toggle indentation guide
-* ,p: Disable mouse support for copying
-* ,o: Open file
-* ,s: Split window
-* ,t: New tab
-* ,w: Close tab
-* ,y: Show the yank ring
-* kj: Switch to normal mode and save
-* Ctrl+{h,j,k,l}: Move among windows
+* `;` maps to `:`
+* `,a`: Ack from the current directory
+* `,c<space>`: Toggle comments
+* `,e`: Open file in new tab
+* `,l`: Toggle NERDTree
+* `,ig`: Toggle indentation guide
+* `,p`: Disable mouse support for copying
+* `,o`: Open file
+* `,s`: Split window
+* `,t`: New tab
+* `,w`: Close tab
+* `,y`: Show the yank ring
+* `kj`: Switch to normal mode and save
+* `Ctrl+{h,j,k,l}`: Move among windows
 
 🏩

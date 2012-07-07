@@ -11,6 +11,7 @@
 "   ,e: open file in new tab
 "   ,l: Toggle NERDTree
 "   ,ig: Toggle indentation guide
+"   ,k: Syntax-check the current file
 "   ,p: Disable mouse support for copying
 "   ,o: open file
 "   ,s: split window
@@ -55,6 +56,9 @@ Bundle 'vim-scripts/YankRing.vim'
 
 " syntax files
 Bundle 'pangloss/vim-javascript'
+
+" checksyntax config
+let g:checksyntax#auto_mode = 0
 
 " indent-guide config
 let g:indent_guides_guide_size = 1
@@ -144,6 +148,7 @@ let mapleader = ","
 nnoremap <leader>a :Ack 
 nnoremap <leader>e :tabnew<CR>:CommandT<CR>
 nnoremap <leader>l :NERDTreeToggle<CR>
+nnoremap <leader>k :CheckSyntax<CR>
 nnoremap <leader>o :CommandT<CR>
 nnoremap <leader>t :tabnew<CR>
 nnoremap <leader>s :vsplit<CR>

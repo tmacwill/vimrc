@@ -37,6 +37,7 @@ Other available (awesome) colorschemes:
 * `,e`: Open file in new tab
 * `,l`: Toggle NERDTree
 * `,ig`: Toggle indentation guide
+* `,k`: Syntax-check the current file
 * `,p`: Disable mouse support for copying
 * `,o`: Open file
 * `,s`: Split window

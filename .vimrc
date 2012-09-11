@@ -17,7 +17,6 @@
 "   ,s: split window
 "   ,t: new tab
 "   ,w: close tab
-"   ,y: Show the yank ring
 "   kj: enter normal mode and save
 "   Ctrl+{h,j,k,l}: move among windows
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -52,7 +51,6 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
-Bundle 'vim-scripts/YankRing.vim'
 
 " syntax files
 Bundle 'pangloss/vim-javascript'
@@ -62,9 +60,6 @@ let g:checksyntax#auto_mode = 0
 
 " indent-guide config
 let g:indent_guides_guide_size = 1
-
-" yankring config
-let g:yankring_history_dir = '$VIM'
 
 " syntax highlighting and auto-indentation
 syntax on

@@ -43,7 +43,7 @@ Bundle 'vim-scripts/wombat256.vim'
 
 " plugins
 Bundle 'mileszs/ack.vim'
-Bundle 'wincent/Command-T'
+Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
@@ -142,10 +142,10 @@ map <C-l> <C-W>l
 " shortcuts to common commands
 let mapleader = ","
 nnoremap <leader>a :Ack 
-nnoremap <leader>e :tabnew<CR>:CommandT<CR>
+nnoremap <leader>e :tabnew<CR>:CtrlP<CR>
 nnoremap <leader>l :NERDTreeToggle<CR>
 nnoremap <leader>k :CheckSyntax<CR>
-nnoremap <leader>o :CommandT<CR>
+nnoremap <leader>o :CtrlP<CR>
 nnoremap <leader>t :tabnew<CR>
 nnoremap <leader>s :vsplit<CR>
 nnoremap <leader>w :tabclose<CR>

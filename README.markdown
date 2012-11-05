@@ -3,20 +3,10 @@ The Best .vimrc Ever (tm)
 
 ## Installation:
 
-    yum -y install make ruby ruby-devel vim
     mkdir ~/.vim
     git clone git://github.com/tmac721/vimrc.git ~/.vim
     ln -s ~/.vim/.vimrc ~/.vimrc
     vim +BundleInstall +qall
-    cd ~/.vim/bundle/Command-T/ruby/command-t
-    ruby extconf.rb 
-    make 
-
-If using RVM, you'll want to do
-    
-    rvm use system
-
-Before installing!
 
 ## Color Schemes
 
@@ -43,7 +33,6 @@ Other available (awesome) colorschemes:
 * `,s`: Split window
 * `,t`: New tab
 * `,w`: Close tab
-* `,y`: Show the yank ring
 * `kj`: Switch to normal mode and save
 * `Ctrl+{h,j,k,l}`: Move among windows
 

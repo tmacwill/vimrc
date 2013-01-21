@@ -4,7 +4,7 @@ The Best .vimrc Ever (tm)
 ## Installation:
 
     mkdir ~/.vim
-    git clone git://github.com/tmac721/vimrc.git ~/.vim
+    git clone git://github.com/tmacwill/vimrc.git ~/.vim
     ln -s ~/.vim/.vimrc ~/.vimrc
     vim +BundleInstall +qall
 

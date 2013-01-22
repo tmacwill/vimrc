@@ -6,13 +6,15 @@
 "
 " Shortcuts:
 "   ; maps to :
-"   ,a: ack
-"   ,c<space>: Toggle comments
+"   ,a: ack from the current directory
+"   ,c<space>: toggle comments
 "   ,e: open file in new tab
-"   ,l: Toggle NERDTree
-"   ,ig: Toggle indentation guide
-"   ,k: Syntax-check the current file
-"   ,p: Disable mouse support for copying
+"   ,l: toggle NERDTree
+"   ,h: open a shell in a new tab
+"   ,ig: toggle indentation guide
+"   ,k: syntax-check the current file
+"   ,m: toggle mouse support
+"   ,p: toggle paste mode
 "   ,o: open file
 "   ,s: split window
 "   ,t: new tab
@@ -51,15 +53,20 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
+Bundle 'vim-scripts/trailing-whitespace'
 
 " syntax files
 Bundle 'pangloss/vim-javascript'
+Bundle 'tpope/vim-markdown'
 
 " checksyntax config
 let g:checksyntax#auto_mode = 0
 
 " indent-guide config
 let g:indent_guides_guide_size = 1
+
+" ctrlp config
+let g:ctrlp_working_path_mode = 'c'
 
 " syntax highlighting and auto-indentation
 syntax on
@@ -78,9 +85,6 @@ set shiftwidth=4
 set tabstop=4
 set smarttab
 set expandtab
-
-" highlight characters longer than 120 lines
-match ErrorMsg '\%>120v.\+'
 
 " faster tab navigation
 nnoremap <S-tab> :tabprevious<CR>
@@ -141,15 +145,16 @@ map <C-l> <C-W>l
 
 " shortcuts to common commands
 let mapleader = ","
-nnoremap <leader>a :Ack 
+nnoremap <leader>a :Ack
 nnoremap <leader>e :tabnew<CR>:CtrlP<CR>
+nnoremap <leader>h :tabnew<CR>:ConqueTerm bash<CR>
 nnoremap <leader>l :NERDTreeToggle<CR>
 nnoremap <leader>k :CheckSyntax<CR>
 nnoremap <leader>o :CtrlP<CR>
+nnoremap <leader>p :set invpaste<CR>
 nnoremap <leader>t :tabnew<CR>
 nnoremap <leader>s :vsplit<CR>
 nnoremap <leader>w :tabclose<CR>
-nnoremap <leader>y :YRShow<CR>
 
 " ; is better than :, and kj is better than ctrl-c
 nnoremap ; :
@@ -163,12 +168,12 @@ nnoremap <silent> j gj
 
 " make copy/pasting nice
 function! ToggleMouse()
-    if &mouse == 'a' 
+    if &mouse == 'a'
         set mouse=r
         set nonu
     else
         set mouse=a
-        set nu 
+        set nu
     endif
 endfunction
-nnoremap <leader>p :call ToggleMouse()<CR>
+nnoremap <leader>m :call ToggleMouse()<CR>

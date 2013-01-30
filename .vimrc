@@ -50,7 +50,6 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/trailing-whitespace'
@@ -177,3 +176,6 @@ function! ToggleMouse()
     endif
 endfunction
 nnoremap <leader>m :call ToggleMouse()<CR>
+
+set laststatus=2
+set statusline=%m\ %t\ %h%r%y\ %{fugitive#statusline()}\ %#error#%{&paste?'[paste]':''}%*%=%{strlen(&fenc)?&fenc:'none'}\ %{&ff}\ %P\ \L%l:\C%c

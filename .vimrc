@@ -177,5 +177,45 @@ function! ToggleMouse()
 endfunction
 nnoremap <leader>m :call ToggleMouse()<CR>
 
+" statusline insert mode is blue
+function! StatuslineInsertMode()
+    hi statusline ctermbg=6
+endfunction
+
+" statusline normal mode is gray
+function! StatuslineNormalMode()
+    hi statusline ctermbg=240
+endfunction
+call StatuslineNormalMode()
+
+" statusline visual mode is green
+function! StatuslineVisualMode()
+    hi statusline ctermbg=28
+endfunction
+
+" mode text
+function! StatuslineModeText()
+    let mode = mode()
+    if mode == 'i'
+        return 'INSERT'
+    elseif mode == 'v'
+        return 'VISUAL'
+    else
+        return 'NORMAL'
+endfunction
+
+" statusline
 set laststatus=2
-set statusline=%m\ %t\ %h%r%y\ %{fugitive#statusline()}\ %#error#%{&paste?'[paste]':''}%*%=%{strlen(&fenc)?&fenc:'none'}\ %{&ff}\ %P\ \L%l:\C%c
+set statusline=%m\ %{StatuslineModeText()}\ %t\ %h%r%y\ %{fugitive#statusline()}\ %#error#%{&paste?'[paste]':''}%*%=%{strlen(&fenc)?&fenc:'none'}\ %{&ff}\ %P\ \L%l:\C%c
+
+" insert mode
+au InsertEnter * call StatuslineInsertMode()
+au InsertLeave * call StatuslineNormalMode()
+
+" visual mode
+nnoremap <silent> v <ESC>:call StatuslineVisualMode()<CR>v
+nnoremap <silent> V <ESC>:call StatuslineVisualMode()<CR>V
+nnoremap <silent> <C-v> <ESC>:call StatuslineVisualMode()<CR><C-v>
+
+" ctrl-c doesn't trigger insertleave, so manually switch statusline
+map <C-c> <C-c>:call StatuslineNormalMode()<CR>

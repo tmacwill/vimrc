@@ -50,6 +50,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/trailing-whitespace'
@@ -78,6 +79,9 @@ set nu
 
 " omg folding is the worst
 set nofoldenable
+
+" omg automatic comment insertion is the worst
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " expand tabs to 4 spaces
 set shiftwidth=4

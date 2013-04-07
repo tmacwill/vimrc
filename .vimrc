@@ -7,11 +7,12 @@
 " Shortcuts:
 "   ; maps to :
 "   ,a: ack from the current directory
-"   ,c<space>: toggle comments
+"   ,b: browse tags
+"   ,c: toggle comments
+"   ,C: toggle block comments
 "   ,e: open file in new tab
 "   ,l: toggle NERDTree
 "   ,h: open a shell in a new tab
-"   ,ig: toggle indentation guide
 "   ,k: syntax-check the current file
 "   ,m: toggle mouse support
 "   ,p: toggle paste mode
@@ -40,20 +41,23 @@ Bundle 'tomtom/checksyntax_vim'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'tomasr/molokai'
 Bundle 'vim-scripts/Skittles-Dark'
+Bundle 'sickill/vim-monokai'
 Bundle 'hukl/Smyck-Color-Scheme'
 Bundle 'vim-scripts/wombat256.vim'
 
 " plugins
 Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
+Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-scripts/trailing-whitespace'
+Bundle 'vim-scripts/taglist.vim'
 
 " syntax files
 Bundle 'pangloss/vim-javascript'
@@ -67,6 +71,9 @@ let g:indent_guides_guide_size = 1
 
 " ctrlp config
 let g:ctrlp_working_path_mode = 'c'
+
+" taglist config
+let g:Tlist_Use_Right_Window = 1
 
 " syntax highlighting and auto-indentation
 syntax on
@@ -149,9 +156,14 @@ map <C-l> <C-W>l
 " shortcuts to common commands
 let mapleader = ","
 nnoremap <leader>a :Ack
+nnoremap <leader>b :TlistToggle<CR>
+nnoremap <leader>c :TComment<CR>
+nnoremap <leader>C :TCommentBlock<CR>
+vnoremap <leader>c :TComment<CR>
+vnoremap <leader>C :TCommentBlock<CR>
 nnoremap <leader>e :tabnew<CR>:CtrlP<CR>
 nnoremap <leader>h :tabnew<CR>:ConqueTerm bash<CR>
-nnoremap <leader>l :NERDTreeToggle<CR>
+nnoremap <leader>l :NERDTreeTabsToggle<CR>
 nnoremap <leader>k :CheckSyntax<CR>
 nnoremap <leader>o :CtrlP<CR>
 nnoremap <leader>p :set invpaste<CR>

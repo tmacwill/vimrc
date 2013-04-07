@@ -3,6 +3,7 @@ The Best .vimrc Ever (tm)
 
 ## Installation:
 
+    yum install ack ctags
     mkdir ~/.vim
     git clone git://github.com/tmacwill/vimrc.git ~/.vim
     ln -s ~/.vim/.vimrc ~/.vimrc
@@ -21,19 +22,20 @@ Other available (awesome) colorschemes:
 
 ## Shortcuts
 
-* `;` maps to `:`
-* `,a`: Ack from the current directory
-* `,c<space>`: Toggle comments
-* `,e`: Open file in new tab
-* `,l`: Toggle NERDTree
-* `,ig`: Toggle indentation guide
-* `,k`: Syntax-check the current file
-* `,p`: Disable mouse support for copying
-* `,o`: Open file
-* `,s`: Split window
-* `,t`: New tab
-* `,w`: Close tab
-* `kj`: Switch to normal mode and save
-* `Ctrl+{h,j,k,l}`: Move among windows
-
-🏩
+* ; maps to :
+* ,a: ack from the current directory
+* ,b: browse tags
+* ,c: toggle comments
+* ,C: toggle block comments
+* ,e: open file in new tab
+* ,l: toggle NERDTree
+* ,h: open a shell in a new tab
+* ,k: syntax-check the current file
+* ,m: toggle mouse support
+* ,p: toggle paste mode
+* ,o: open file
+* ,s: split window
+* ,t: new tab
+* ,w: close tab
+* kj: enter normal mode and save
+* Ctrl+{h,j,k,l}: move among windows

@@ -58,6 +58,8 @@ Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-scripts/trailing-whitespace'
 Bundle 'vim-scripts/taglist.vim'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'Valloric/YouCompleteMe'
 
 " syntax files
 Bundle 'pangloss/vim-javascript'

@@ -81,7 +81,7 @@ let g:Tlist_Use_Right_Window = 1
 syntax on
 filetype indent on
 filetype plugin on
-:inoremap # X<C-H>#
+inoremap # X<C-H>#
 set ai
 set si
 set nu
@@ -141,6 +141,15 @@ set laststatus=2
 
 " enable mouse support
 set mouse=a
+
+" cursor
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+" word wrapping
+set wrap
+set linebreak
+set nolist
 
 " better tab completion on commands
 set wildmenu

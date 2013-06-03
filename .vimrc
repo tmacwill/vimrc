@@ -59,11 +59,11 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-scripts/trailing-whitespace'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'Valloric/YouCompleteMe'
 
 " syntax files
-Bundle 'pangloss/vim-javascript'
+Bundle 'jelera/vim-javascript-syntax'
 Bundle 'tpope/vim-markdown'
+Bundle 'voithos/vim-python-syntax'
 
 " checksyntax config
 let g:checksyntax#auto_mode = 0

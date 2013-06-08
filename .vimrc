@@ -22,6 +22,8 @@
 "   ,w: close tab
 "   kj: enter normal mode and save
 "   Ctrl+{h,j,k,l}: move among windows
+"   ii: operate on all text at current indent level
+"   ai: operate on all text plus one line up at current indent level
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " long live vim
@@ -50,7 +52,6 @@ Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
-Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-repeat'
@@ -59,20 +60,21 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-scripts/trailing-whitespace'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'kshenoy/vim-signature'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'Shougo/neocomplcache.vim'
 
 " syntax files
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'tpope/vim-markdown'
 Bundle 'voithos/vim-python-syntax'
 
+" neocomplecache config
+let g:neocomplcache_enable_at_startup = 1
+set completeopt-=preview
+
 " checksyntax config
 let g:checksyntax#auto_mode = 0
-
-" indent-guide config
-let g:indent_guides_guide_size = 1
-
-" ctrlp config
-let g:ctrlp_working_path_mode = 'c'
 
 " taglist config
 let g:Tlist_Use_Right_Window = 1

@@ -62,16 +62,12 @@ Bundle 'vim-scripts/taglist.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'kshenoy/vim-signature'
 Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'Shougo/neocomplcache.vim'
+Bundle 'gregsexton/gitv'
 
 " syntax files
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'tpope/vim-markdown'
 Bundle 'voithos/vim-python-syntax'
-
-" neocomplecache config
-let g:neocomplcache_enable_at_startup = 1
-set completeopt-=preview
 
 " checksyntax config
 let g:checksyntax#auto_mode = 0

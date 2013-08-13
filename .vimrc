@@ -53,7 +53,6 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tcomment_vim'
@@ -63,6 +62,7 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'kshenoy/vim-signature'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'gregsexton/gitv'
+Bundle 'bling/vim-airline'
 
 " syntax files
 Bundle 'jelera/vim-javascript-syntax'
@@ -74,6 +74,8 @@ let g:checksyntax#auto_mode = 0
 
 " taglist config
 let g:Tlist_Use_Right_Window = 1
+
+let g:airline_powerline_fonts = 1
 
 " syntax highlighting and auto-indentation
 syntax on
@@ -124,7 +126,6 @@ endif
 set background=dark
 set t_Co=256
 colorscheme smyck
-set gfn=Inconsolata:h14
 
 " keep at least 5 lines below the cursor
 set scrolloff=5
@@ -202,45 +203,5 @@ function! ToggleMouse()
 endfunction
 nnoremap <leader>m :call ToggleMouse()<CR>
 
-" statusline insert mode is blue
-function! StatuslineInsertMode()
-    hi statusline ctermbg=6
-endfunction
-
-" statusline normal mode is gray
-function! StatuslineNormalMode()
-    hi statusline ctermbg=240
-endfunction
-call StatuslineNormalMode()
-
-" statusline visual mode is green
-function! StatuslineVisualMode()
-    hi statusline ctermbg=28
-endfunction
-
-" mode text
-function! StatuslineModeText()
-    let mode = mode()
-    if mode == 'i'
-        return 'INSERT'
-    elseif mode == 'v'
-        return 'VISUAL'
-    else
-        return 'NORMAL'
-endfunction
-
 " statusline
 set laststatus=2
-set statusline=%m\ %{StatuslineModeText()}\ %t\ %h%r%y\ %{fugitive#statusline()}\ %#error#%{&paste?'[paste]':''}%*%=%{strlen(&fenc)?&fenc:'none'}\ %{&ff}\ %P\ \L%l:\C%c
-
-" insert mode
-au InsertEnter * call StatuslineInsertMode()
-au InsertLeave * call StatuslineNormalMode()
-
-" visual mode
-nnoremap <silent> v <ESC>:call StatuslineVisualMode()<CR>v
-nnoremap <silent> V <ESC>:call StatuslineVisualMode()<CR>V
-nnoremap <silent> <C-v> <ESC>:call StatuslineVisualMode()<CR><C-v>
-
-" ctrl-c doesn't trigger insertleave, so manually switch statusline
-map <C-c> <C-c>:call StatuslineNormalMode()<CR>

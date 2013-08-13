@@ -9,6 +9,10 @@ The Best .vimrc Ever (tm)
     ln -s ~/.vim/.vimrc ~/.vimrc
     vim +BundleInstall +qall
 
+If on a Mac, you'll want to install [MacPorts](http://www.macports.org/) and then run:
+
+    sudo port install ctags
+
 ## Color Schemes
 
 The default color scheme is [Smyck](https://github.com/hukl/Smyck-Color-Scheme/), which looks best with the corresponding terminal theme installed as well.
@@ -19,6 +23,10 @@ Other available (awesome) colorschemes:
 * skittles_dark
 * molokai
 * wombat256mod
+
+## Font
+
+Using one of the following fonts is recommended: https://github.com/Lokaltog/powerline-fonts. Right now, I use Inconsolata. On iTerm2, you may have to make the size of "Non-ASCII Font" smaller than the size of "Regular Font" in order to ensure everything lines up.
 
 ## Shortcuts
 

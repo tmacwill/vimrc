@@ -59,7 +59,6 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-scripts/trailing-whitespace'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'kshenoy/vim-signature'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'gregsexton/gitv'
 Bundle 'bling/vim-airline'
@@ -68,6 +67,7 @@ Bundle 'bling/vim-airline'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'tpope/vim-markdown'
 Bundle 'voithos/vim-python-syntax'
+Bundle 'kchmck/vim-coffee-script'
 
 " checksyntax config
 let g:checksyntax#auto_mode = 0

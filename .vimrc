@@ -11,6 +11,8 @@
 "   ,c: toggle comments
 "   ,C: toggle block comments
 "   ,e: open file in new tab
+"   ,g: ctags go to definition in new tab
+"   ,G: ctags go to definition in new buffer
 "   ,l: toggle NERDTree
 "   ,h: open a shell in a new tab
 "   ,k: syntax-check the current file
@@ -36,9 +38,6 @@ set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
-" plugins
-Bundle 'tomtom/checksyntax_vim'
-
 " color schemes
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'tomasr/molokai'
@@ -49,6 +48,7 @@ Bundle 'vim-scripts/wombat256.vim'
 
 " plugins
 Bundle 'mileszs/ack.vim'
+Bundle 'tomtom/checksyntax_vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
@@ -62,9 +62,10 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'gregsexton/gitv'
 Bundle 'bling/vim-airline'
+Bundle 'wincent/Command-T'
 
 " syntax files
-Bundle 'jelera/vim-javascript-syntax'
+Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-markdown'
 Bundle 'voithos/vim-python-syntax'
 Bundle 'kchmck/vim-coffee-script'
@@ -75,7 +76,12 @@ let g:checksyntax#auto_mode = 0
 " taglist config
 let g:Tlist_Use_Right_Window = 1
 
+" airline config
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" ctrl-p config
+let g:ctrlp_working_path_mode = 'c'
 
 " syntax highlighting and auto-indentation
 syntax on
@@ -157,6 +163,9 @@ set wildmode=list:longest
 " close buffer when tab is closed
 set nohidden
 
+" ctags
+set tags=./tags,tags;
+
 " better moving between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -171,11 +180,13 @@ nnoremap <leader>c :TComment<CR>
 nnoremap <leader>C :TCommentBlock<CR>
 vnoremap <leader>c :TComment<CR>
 vnoremap <leader>C :TCommentBlock<CR>
-nnoremap <leader>e :tabnew<CR>:CtrlP<CR>
+nnoremap <leader>e :tabnew<CR>:CommandT<CR>
+nnoremap <leader>g <C-w><C-]><C-w>T
+nnoremap <leader>G <C-]>
 nnoremap <leader>h :tabnew<CR>:ConqueTerm bash<CR>
 nnoremap <leader>l :NERDTreeTabsToggle<CR>
 nnoremap <leader>k :CheckSyntax<CR>
-nnoremap <leader>o :CtrlP<CR>
+nnoremap <leader>o :CommandT<CR>
 nnoremap <leader>p :set invpaste<CR>
 nnoremap <leader>t :tabnew<CR>
 nnoremap <leader>s :vsplit<CR>
@@ -205,3 +216,4 @@ nnoremap <leader>m :call ToggleMouse()<CR>
 
 " statusline
 set laststatus=2
+

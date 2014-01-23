@@ -3,15 +3,31 @@ The Best .vimrc Ever (tm)
 
 ## Installation:
 
-    yum install ack ctags
+You'll need vim compiled with Ruby support. To find out if your vim supports Ruby, run this:
+
+    vim --version
+
+If you see `+ruby`, you're good to go. If you see `-ruby`, then your vim doesn't have Ruby. Luckily, compiling from source is pretty simple. On Ubuntu, you can do:
+
+    sudo apt-get install ruby ruby-dev
+    hg clone https://code.google.com/p/vim/
+    ./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.7-config --enable-perlinterp --enable-cscope --prefix=/usr
+    make VIMRUNTIMEDIR=/usr/share/vim/vim74
+    sudo make install
+
+Now you can install the vimrc:
+
     mkdir ~/.vim
     git clone git://github.com/tmacwill/vimrc.git ~/.vim
     ln -s ~/.vim/.vimrc ~/.vimrc
     vim +BundleInstall +qall
+    cd ~/.vim/bundle/Command-T/ruby/command-t
+    ruby extconf.rb
+    make
 
-If on a Mac, you'll want to install [MacPorts](http://www.macports.org/) and then run:
+You'll also probably want ctags installed. On Ubuntu, you can do:
 
-    sudo port install ctags
+    sudo apt-get install ctags
 
 ## Color Schemes
 

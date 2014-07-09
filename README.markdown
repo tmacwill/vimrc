@@ -7,9 +7,13 @@ You'll need vim compiled with Ruby support. To find out if your vim supports Rub
 
     vim --version
 
-If you see `+ruby`, you're good to go. If you see `-ruby`, then your vim doesn't have Ruby. Luckily, compiling from source is pretty simple. On Ubuntu, you can do:
+If you see `+ruby`, you're good to go. If you see `-ruby`, then your vim doesn't have Ruby. On Ubuntu, you can get a version of vim with Ruby by running:
 
-    sudo apt-get install ruby ruby-dev
+    sudo apt-get install vim-nox
+
+If that doesn't work, you can compile from source. On Ubuntu, you can do:
+
+    sudo apt-get install build-essential libncurses mercurial python python-dev ruby ruby-dev
     hg clone https://code.google.com/p/vim/
     ./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.7-config --enable-perlinterp --enable-cscope --prefix=/usr
     make VIMRUNTIMEDIR=/usr/share/vim/vim74
@@ -19,6 +23,7 @@ Now you can install the vimrc:
 
     mkdir ~/.vim
     git clone git://github.com/tmacwill/vimrc.git ~/.vim
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     ln -s ~/.vim/.vimrc ~/.vimrc
     vim +BundleInstall +qall
     cd ~/.vim/bundle/Command-T/ruby/command-t

@@ -34,41 +34,44 @@ set nocompatible
 
 " vundle
 filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 
 " color schemes
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'tomasr/molokai'
-Bundle 'vim-scripts/Skittles-Dark'
-Bundle 'sickill/vim-monokai'
-Bundle 'hukl/Smyck-Color-Scheme'
-Bundle 'vim-scripts/wombat256.vim'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'tomasr/molokai'
+Plugin 'vim-scripts/Skittles-Dark'
+Plugin 'sickill/vim-monokai'
+Plugin 'hukl/Smyck-Color-Scheme'
+Plugin 'vim-scripts/wombat256.vim'
 
 " plugins
-Bundle 'mileszs/ack.vim'
-Bundle 'tomtom/checksyntax_vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-fugitive'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'vim-scripts/trailing-whitespace'
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'gregsexton/gitv'
-Bundle 'bling/vim-airline'
-Bundle 'wincent/Command-T'
+Plugin 'mileszs/ack.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-fugitive'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'vim-scripts/trailing-whitespace'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'gregsexton/gitv'
+Plugin 'bling/vim-airline'
+Plugin 'wincent/Command-T'
 
 " syntax files
-Bundle 'pangloss/vim-javascript'
-Bundle 'tpope/vim-markdown'
-Bundle 'voithos/vim-python-syntax'
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-markdown'
+Plugin 'voithos/vim-python-syntax'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'derekwyatt/vim-scala'
+
+call vundle#end()
+filetype plugin indent on
 
 " checksyntax config
 let g:checksyntax#auto_mode = 0

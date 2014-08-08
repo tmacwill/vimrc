@@ -116,7 +116,6 @@ set showtabline=2
 
 " searching options
 set incsearch
-set showcmd
 set ignorecase
 set smartcase
 
@@ -216,7 +215,3 @@ function! ToggleMouse()
     endif
 endfunction
 nnoremap <leader>m :call ToggleMouse()<CR>
-
-" statusline
-set laststatus=2
-

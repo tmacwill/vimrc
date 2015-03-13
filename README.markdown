@@ -13,7 +13,7 @@ If you see `+ruby`, you're good to go. If you see `-ruby`, then your vim doesn't
 
 If that doesn't work, you can compile from source. On Ubuntu, you can do:
 
-    sudo apt-get install build-essential libncurses mercurial python python-dev ruby ruby-dev
+    sudo apt-get install build-essential libncurses5 mercurial python python-dev ruby ruby-dev
     hg clone https://code.google.com/p/vim/
     ./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.7-config --enable-perlinterp --enable-cscope --prefix=/usr
     make VIMRUNTIMEDIR=/usr/share/vim/vim74
@@ -21,6 +21,7 @@ If that doesn't work, you can compile from source. On Ubuntu, you can do:
 
 Now you can install the vimrc:
 
+    sudo apt-get install ruby ruby-dev
     mkdir ~/.vim
     git clone git://github.com/tmacwill/vimrc.git ~/.vim
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -32,18 +33,18 @@ Now you can install the vimrc:
 
 You'll also probably want ctags installed. On Ubuntu, you can do:
 
-    sudo apt-get install ctags
+    sudo apt-get install exuberant-ctags
 
 ## Color Schemes
 
-The default color scheme is [Smyck](https://github.com/hukl/Smyck-Color-Scheme/), which looks best with the corresponding terminal theme installed as well.
+The default color scheme is [Smyck](https://github.com/hukl/Smyck-Color-Scheme/). For best results, install both the vim color scheme *and* the terminal color scheme. To install the terminal theme, simply double-click the `itermcolors` file for iTerm or the `terminal` file for Terminal, then pick the color scheme from the terminal preferences menu.
 
 Other available (awesome) colorschemes:
 
-* jellybeans
-* skittles_dark
-* molokai
-* wombat256mod
+* `jellybeans`
+* `skittles_dark`
+* `molokai`
+* `wombat256mod`
 
 ## Font
 
@@ -57,6 +58,8 @@ Using one of the following fonts is recommended: https://github.com/Lokaltog/pow
 * ,c: toggle comments
 * ,C: toggle block comments
 * ,e: open file in new tab
+* ,g: ctags go to definition in new tab
+* ,G: ctags go to definition in new buffer
 * ,l: toggle NERDTree
 * ,h: open a shell in a new tab
 * ,k: syntax-check the current file

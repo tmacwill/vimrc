@@ -69,9 +69,14 @@ Plugin 'tpope/vim-markdown'
 Plugin 'voithos/vim-python-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'groenewege/vim-less'
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()
 filetype plugin indent on
+
+" command-t config
+let g:CommandTTraverseSCM = 'pwd'
 
 " checksyntax config
 let g:checksyntax#auto_mode = 0
@@ -83,8 +88,8 @@ let g:Tlist_Use_Right_Window = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-" ctrl-p config
-let g:ctrlp_working_path_mode = 'c'
+" coffeescript config
+hi link coffeeSpaceError NONE
 
 " syntax highlighting and auto-indentation
 syntax on
@@ -161,6 +166,7 @@ set nolist
 " better tab completion on commands
 set wildmenu
 set wildmode=list:longest
+set wildignore+=*.pyc,__pycache__
 
 " close buffer when tab is closed
 set nohidden

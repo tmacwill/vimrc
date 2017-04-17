@@ -166,7 +166,7 @@ set nolist
 " better tab completion on commands
 set wildmenu
 set wildmode=list:longest
-set wildignore+=*.pyc,__pycache__
+set wildignore+=*.pyc,__pycache__,node_modules,venv
 
 " close buffer when tab is closed
 set nohidden

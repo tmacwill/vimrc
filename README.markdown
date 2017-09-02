@@ -27,7 +27,7 @@ Now you can install the vimrc:
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     ln -s ~/.vim/.vimrc ~/.vimrc
     vim +BundleInstall +qall
-    cd ~/.vim/bundle/Command-T/ruby/command-t
+    cd ~/.vim/bundle/Command-T/ruby/command-t/ext/command-t
     ruby extconf.rb
     make
 

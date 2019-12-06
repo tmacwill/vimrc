@@ -6,7 +6,6 @@
 "
 " Shortcuts:
 "   ; maps to :
-"   ,a: ack from the current directory
 "   ,b: browse tags
 "   ,c: toggle comments
 "   ,C: toggle block comments
@@ -48,7 +47,6 @@ Plugin 'hukl/Smyck-Color-Scheme'
 Plugin 'vim-scripts/wombat256.vim'
 
 " plugins
-Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
@@ -63,6 +61,7 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'gregsexton/gitv'
 " Plugin 'bling/vim-airline'
 Plugin 'wincent/Command-T'
+Plugin 'Chiel92/vim-autoformat'
 
 " syntax files
 Plugin 'pangloss/vim-javascript'
@@ -72,12 +71,12 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'groenewege/vim-less'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'rhysd/vim-clang-format'
 Plugin 'chr4/nginx.vim'
 Plugin 'fatih/vim-go'
 Plugin 'mxw/vim-jsx'
 
 call vundle#end()
+
 filetype plugin indent on
 
 " command-t config
@@ -88,27 +87,6 @@ let g:checksyntax#auto_mode = 0
 
 " taglist config
 let g:Tlist_Use_Right_Window = 1
-
-" formatter config
-let g:clang_format#style_options = {
-    \"BasedOnStyle": "google",
-    \"IndentWidth": 4,
-    \"ContinuationIndentWidth": 4,
-    \"ColumnLimit": 120,
-    \"BreakBeforeBraces": "Custom",
-    \"BraceWrapping": {"BeforeElse": "true", "BeforeCatch": "true", "SplitEmptyFunction": "true", "SplitEmptyRecord": "true"},
-    \"AlignAfterOpenBracket": "AlwaysBreak",
-    \"BinPackArguments": "false",
-    \"BinPackParameters": "false",
-    \"AllowShortFunctionsOnASingleLine": "None",
-    \"AllowShortBlocksOnASingleLine": "false",
-    \"AllowAllParametersOfDeclarationOnNextLine": "true",
-    \"DanglingParenthesis": "true"
-\}
-let g:clang_format#command = 'clang-format-patched'
-let g:clang_format#auto_format = 1
-autocmd FileType proto ClangFormatAutoDisable
-autocmd FileType javascript ClangFormatAutoDisable
 
 " uncomment if you'd rather use airline than powerline
 "" airline config
@@ -128,10 +106,35 @@ set ai
 set si
 set nu
 
+" fix some filetype detection
 au BufRead,BufNewFile *.g4* set filetype=antlr
+au BufRead,BufNewFile *.yaml* set filetype=yaml
 au BufRead,BufNewFile *.proto* set filetype=proto
 au BufRead,BufNewFile Dockerfile* set filetype=dockerfile
-au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+let g:formatdef_custom_python = '"black -q --fast -"'
+let g:formatdef_custom_java = '"prettier --print-width=100 --parser=java"'
+let g:formatdef_custom_javascript = '"prettier --print-width=100 --parser=typescript"'
+let g:formatters_c = []
+let g:formatters_cpp = []
+let g:formatters_java = ['custom_java']
+let g:formatters_python = ['custom_python']
+let g:formatters_javascript = ['custom_javascript']
+let g:formatters_typescript = ['custom_javascript']
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+au BufWrite * :Autoformat
+
+" expand tabs to 2 spaces
+set shiftwidth=2
+set tabstop=2
+set smarttab
+set expandtab
+
+" except 4 spaces for some formats
+autocmd Filetype dockerfile setlocal expandtab tabstop=4 shiftwidth=4
+autocmd Filetype proto setlocal expandtab tabstop=4 shiftwidth=4
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
 
 " omg folding is the worst
 set nofoldenable
@@ -141,12 +144,6 @@ au FileType * setlocal comments-=:// comments+=f://
 
 " omg a limit to how many tabs can open is the worst
 set tabpagemax=100
-
-" expand tabs to 4 spaces
-set shiftwidth=4
-set tabstop=4
-set smarttab
-set expandtab
 
 " faster tab navigation
 nnoremap <S-tab> :tabprevious<CR>
@@ -207,7 +204,7 @@ set nolist
 " better tab completion on commands
 set wildmenu
 set wildmode=list:longest
-set wildignore+=*.pyc,__pycache__,node_modules,venv,build,*.class
+set wildignore+=*.pyc,__pycache__,node_modules,venv,build,*.class,bin/main,bin/test,target
 
 " close buffer when tab is closed
 set nohidden
@@ -230,7 +227,6 @@ nnoremap <leader>C :TCommentBlock<CR>
 vnoremap <leader>c :TComment<CR>
 vnoremap <leader>C :TCommentBlock<CR>
 nnoremap <leader>e :tabnew<CR>:CommandT<CR>
-nnoremap <leader>f :ClangFormat<CR>
 nnoremap <leader>g <C-w><C-]><C-w>T
 nnoremap <leader>G <C-]>
 nnoremap <leader>h :tabnew<CR>:ConqueTerm bash<CR>

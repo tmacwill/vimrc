@@ -33,7 +33,6 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'vim-scripts/trailing-whitespace'
-Plugin 'vim-scripts/taglist.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'gregsexton/gitv'
@@ -63,9 +62,6 @@ let g:CommandTTraverseSCM = 'pwd'
 
 " checksyntax config
 let g:checksyntax#auto_mode = 0
-
-" taglist config
-let g:Tlist_Use_Right_Window = 1
 
 " uncomment if you'd rather use airline than powerline
 "" airline config

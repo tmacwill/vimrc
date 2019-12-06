@@ -4,28 +4,6 @@
 "
 " Be sure to read the README!
 "
-" Shortcuts:
-"   ; maps to :
-"   ,b: browse tags
-"   ,c: toggle comments
-"   ,C: toggle block comments
-"   ,e: open file in new tab
-"   ,f: format file
-"   ,g: ctags go to definition in new tab
-"   ,G: ctags go to definition in new buffer
-"   ,l: toggle NERDTree
-"   ,h: open a shell in a new tab
-"   ,k: syntax-check the current file
-"   ,m: toggle mouse support
-"   ,p: toggle paste mode
-"   ,o: open file
-"   ,s: split window
-"   ,t: new tab
-"   ,w: close tab
-"   kj: enter normal mode and save
-"   Ctrl+{h,j,k,l}: move among windows
-"   ii: operate on all text at current indent level
-"   ai: operate on all text plus one line up at current indent level
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " long live vim
@@ -74,6 +52,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'chr4/nginx.vim'
 Plugin 'fatih/vim-go'
 Plugin 'mxw/vim-jsx'
+Plugin 'keith/swift.vim'
 
 call vundle#end()
 
@@ -111,13 +90,18 @@ au BufRead,BufNewFile *.g4* set filetype=antlr
 au BufRead,BufNewFile *.yaml* set filetype=yaml
 au BufRead,BufNewFile *.proto* set filetype=proto
 au BufRead,BufNewFile Dockerfile* set filetype=dockerfile
+au BufRead,BufNewFile *.tsx set filetype=typescript
 
-let g:formatdef_custom_python = '"black -q --fast -"'
+let g:formatdef_custom_html = '"prettier --print-width=100 --parser=html"'
 let g:formatdef_custom_java = '"prettier --print-width=100 --parser=java"'
 let g:formatdef_custom_javascript = '"prettier --print-width=100 --parser=typescript"'
+let g:formatdef_custom_json = '"prettier --print-width=100 --parser=json"'
+let g:formatdef_custom_python = '"black -q --fast -"'
 let g:formatters_c = []
 let g:formatters_cpp = []
+let g:formatters_html = ['custom_html']
 let g:formatters_java = ['custom_java']
+let g:formatters_json = ['custom_json']
 let g:formatters_python = ['custom_python']
 let g:formatters_javascript = ['custom_javascript']
 let g:formatters_typescript = ['custom_javascript']
@@ -204,13 +188,10 @@ set nolist
 " better tab completion on commands
 set wildmenu
 set wildmode=list:longest
-set wildignore+=*.pyc,__pycache__,node_modules,venv,build,*.class,bin/main,bin/test,target
+set wildignore+=*.pyc,__pycache__,node_modules,venv,build,*.class,bin/main,bin/test,target,dist
 
 " close buffer when tab is closed
 set nohidden
-
-" ctags
-set tags=./tags,tags;
 
 " better moving between windows
 map <C-j> <C-W>j
@@ -250,13 +231,13 @@ nnoremap <silent> j gj
 
 " make copy/pasting nice
 function! ToggleMouse()
-    if &mouse == 'a'
-        set mouse=r
-        set nonu
-    else
-        set mouse=a
-        set nu
-    endif
+  if &mouse == 'a'
+    set mouse=r
+    set nonu
+  else
+    set mouse=a
+    set nu
+  endif
 endfunction
 nnoremap <leader>m :call ToggleMouse()<CR>
 

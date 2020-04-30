@@ -97,24 +97,30 @@ let g:formatters_c = []
 let g:formatters_cpp = []
 let g:formatters_html = ['custom_html']
 let g:formatters_java = ['custom_java']
-let g:formatters_json = ['custom_json']
-let g:formatters_python = ['custom_python']
 let g:formatters_javascript = ['custom_javascript']
+let g:formatters_json = ['custom_json']
+let g:formatters_markdown = []
+let g:formatters_python = ['custom_python']
 let g:formatters_typescript = ['custom_javascript']
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 au BufWrite * :Autoformat
 
-" expand tabs to 2 spaces
-set shiftwidth=2
-set tabstop=2
+" expand tabs to 4 spaces
+set shiftwidth=4
+set tabstop=4
 set smarttab
 set expandtab
 
-" except 4 spaces for some formats
-autocmd Filetype dockerfile setlocal expandtab tabstop=4 shiftwidth=4
-autocmd Filetype proto setlocal expandtab tabstop=4 shiftwidth=4
-autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
+" except 2 spaces for some formats
+autocmd Filetype css setlocal expandtab tabstop=2 shiftwidth=2
+autocmd Filetype html setlocal expandtab tabstop=2 shiftwidth=2
+autocmd Filetype java setlocal expandtab tabstop=2 shiftwidth=2
+autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2
+autocmd Filetype scss setlocal expandtab tabstop=2 shiftwidth=2
+autocmd Filetype typescript setlocal expandtab tabstop=2 shiftwidth=2
+autocmd Filetype xml setlocal expandtab tabstop=2 shiftwidth=2
+autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2
 
 " omg folding is the worst
 set nofoldenable
@@ -124,6 +130,9 @@ au FileType * setlocal comments-=:// comments+=f://
 
 " omg a limit to how many tabs can open is the worst
 set tabpagemax=100
+
+" omg the crazy SQL autocomplete thing is the worst
+let g:omni_sql_no_default_maps = 1
 
 " faster tab navigation
 nnoremap <S-tab> :tabprevious<CR>
@@ -217,9 +226,9 @@ nnoremap <leader>w :tabclose<CR>
 
 " ; is better than :, and kj is better than ctrl-c
 nnoremap ; :
-
-" also autosave when going to insert mode
-inoremap kj <Esc>:w<CR>
+inoremap kj <Esc>
+" uncomment if you also want autosave
+" inoremap kj <Esc>:w<CR>
 
 " more logical vertical navigation
 nnoremap <silent> k gk

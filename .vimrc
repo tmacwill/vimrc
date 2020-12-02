@@ -13,6 +13,7 @@ set nocompatible
 " vundle
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/usr/local/opt/fzf
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
@@ -25,7 +26,6 @@ Plugin 'hukl/Smyck-Color-Scheme'
 Plugin 'vim-scripts/wombat256.vim'
 
 " plugins
-Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -36,9 +36,10 @@ Plugin 'vim-scripts/trailing-whitespace'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'gregsexton/gitv'
-" Plugin 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 Plugin 'wincent/Command-T'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'junegunn/fzf.vim'
 
 " syntax files
 Plugin 'pangloss/vim-javascript'
@@ -63,11 +64,10 @@ let g:CommandTTraverseSCM = 'pwd'
 " checksyntax config
 let g:checksyntax#auto_mode = 0
 
-" uncomment if you'd rather use airline than powerline
-"" airline config
-" let g:airline_powerline_fonts = 1
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#fnamemod = ':t'
+" airline config
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " coffeescript config
 hi link coffeeSpaceError NONE
@@ -212,13 +212,13 @@ nnoremap <leader>c :TComment<CR>
 nnoremap <leader>C :TCommentBlock<CR>
 vnoremap <leader>c :TComment<CR>
 vnoremap <leader>C :TCommentBlock<CR>
-nnoremap <leader>e :tabnew<CR>:CommandT<CR>
+nnoremap <expr> <leader>e (len(system('git rev-parse')) ? ':tabnew<cr>:Files' : ':tabnew<cr>:GFiles --exclude-standard --others --cached')."\<cr>"
 nnoremap <leader>g <C-w><C-]><C-w>T
 nnoremap <leader>G <C-]>
 nnoremap <leader>h :tabnew<CR>:ConqueTerm bash<CR>
 nnoremap <leader>l :NERDTreeTabsToggle<CR>
 nnoremap <leader>k :CheckSyntax<CR>
-nnoremap <leader>o :CommandT<CR>
+nnoremap <expr> <leader>o (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
 nnoremap <leader>p :set invpaste<CR>
 nnoremap <leader>t :tabnew<CR>
 nnoremap <leader>s :vsplit<CR>
@@ -227,8 +227,6 @@ nnoremap <leader>w :tabclose<CR>
 " ; is better than :, and kj is better than ctrl-c
 nnoremap ; :
 inoremap kj <Esc>
-" uncomment if you also want autosave
-" inoremap kj <Esc>:w<CR>
 
 " more logical vertical navigation
 nnoremap <silent> k gk
@@ -245,7 +243,3 @@ function! ToggleMouse()
   endif
 endfunction
 nnoremap <leader>m :call ToggleMouse()<CR>
-
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup

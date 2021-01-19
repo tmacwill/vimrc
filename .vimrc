@@ -13,7 +13,6 @@ set nocompatible
 " vundle
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=/usr/local/opt/fzf
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
@@ -39,6 +38,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'bling/vim-airline'
 Plugin 'wincent/Command-T'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
 " syntax files
@@ -93,6 +93,7 @@ let g:formatdef_custom_java = '"prettier --print-width=100 --parser=java"'
 let g:formatdef_custom_javascript = '"prettier --print-width=100 --parser=typescript"'
 let g:formatdef_custom_json = '"prettier --print-width=100 --parser=json"'
 let g:formatdef_custom_python = '"black -q --fast -"'
+let g:formatdef_custom_ruby = '"prettier --print-width=100 --parser=ruby"'
 let g:formatters_c = []
 let g:formatters_cpp = []
 let g:formatters_html = ['custom_html']
@@ -101,6 +102,7 @@ let g:formatters_javascript = ['custom_javascript']
 let g:formatters_json = ['custom_json']
 let g:formatters_markdown = []
 let g:formatters_python = ['custom_python']
+let g:formatters_ruby = ['custom_ruby']
 let g:formatters_typescript = ['custom_javascript']
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0

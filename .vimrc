@@ -88,19 +88,22 @@ au BufRead,BufNewFile *.proto* set filetype=proto
 au BufRead,BufNewFile Dockerfile* set filetype=dockerfile
 au BufRead,BufNewFile *.tsx set filetype=typescript
 
+let g:formatdef_custom_cpp = '"clang-format -style=Google"'
 let g:formatdef_custom_html = '"prettier --print-width=100 --parser=html"'
 let g:formatdef_custom_java = '"prettier --print-width=100 --parser=java"'
 let g:formatdef_custom_javascript = '"prettier --print-width=100 --parser=typescript"'
 let g:formatdef_custom_json = '"prettier --print-width=100 --parser=json"'
 let g:formatdef_custom_python = '"black -q --fast -"'
 let g:formatdef_custom_ruby = '"prettier --print-width=100 --parser=ruby"'
-let g:formatters_c = []
-let g:formatters_cpp = []
+let g:formatters_c = ['custom_cpp']
+let g:formatters_cpp = ['custom_cpp']
 let g:formatters_html = ['custom_html']
 let g:formatters_java = ['custom_java']
 let g:formatters_javascript = ['custom_javascript']
 let g:formatters_json = ['custom_json']
 let g:formatters_markdown = []
+let g:formatters_objcpp = ['custom_cpp']
+let g:formatters_proto = []
 let g:formatters_python = ['custom_python']
 let g:formatters_ruby = ['custom_ruby']
 let g:formatters_typescript = ['custom_javascript']

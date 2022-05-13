@@ -10,17 +10,6 @@
     ln -s ~/.vim/.vimrc ~/.vimrc
     vim +BundleInstall +qall
 
-## Color Schemes
-
-The default color scheme is [Smyck](https://github.com/hukl/Smyck-Color-Scheme/). For best results, install both the vim color scheme _and_ the terminal color scheme. To install the terminal theme, simply double-click the `itermcolors` file for iTerm or the `terminal` file for Terminal, then pick the color scheme from the terminal preferences menu.
-
-Other available (awesome) colorschemes:
-
-- `jellybeans`
-- `skittles_dark`
-- `molokai`
-- `wombat256mod`
-
 ## Font
 
 Using one of the following fonts is recommended: https://github.com/Lokaltog/powerline-fonts. Right now, I use Inconsolata.
@@ -34,7 +23,6 @@ Using one of the following fonts is recommended: https://github.com/Lokaltog/pow
 - ,e: open file in new tab
 - ,l: toggle NERDTree
 - ,h: open a shell in a new tab
-- ,k: syntax-check the current file
 - ,m: toggle mouse support
 - ,p: toggle paste mode
 - ,o: open file

@@ -2,8 +2,6 @@
 " The Best vimrc Ever
 " Tommy MacWilliam <tmacwilliam@cs.harvard.edu>
 "
-" Be sure to read the README!
-"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " long live vim
@@ -17,12 +15,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " color schemes
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'tomasr/molokai'
-Plugin 'vim-scripts/Skittles-Dark'
-Plugin 'sickill/vim-monokai'
 Plugin 'hukl/Smyck-Color-Scheme'
-Plugin 'vim-scripts/wombat256.vim'
+Plugin 'sainnhe/sonokai'
 
 " plugins
 Plugin 'scrooloose/nerdtree'
@@ -36,7 +30,6 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'gregsexton/gitv'
 Plugin 'bling/vim-airline'
-Plugin 'wincent/Command-T'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
@@ -45,32 +38,23 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-markdown'
 Plugin 'voithos/vim-python-syntax'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'derekwyatt/vim-scala'
 Plugin 'groenewege/vim-less'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'chr4/nginx.vim'
 Plugin 'fatih/vim-go'
 Plugin 'mxw/vim-jsx'
 Plugin 'keith/swift.vim'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 
 filetype plugin indent on
 
-" command-t config
-let g:CommandTTraverseSCM = 'pwd'
-
-" checksyntax config
-let g:checksyntax#auto_mode = 0
-
 " airline config
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-
-" coffeescript config
-hi link coffeeSpaceError NONE
+let g:airline_theme = 'sonokai'
 
 " syntax highlighting and auto-indentation
 syntax on
@@ -88,13 +72,14 @@ au BufRead,BufNewFile *.proto* set filetype=proto
 au BufRead,BufNewFile Dockerfile* set filetype=dockerfile
 au BufRead,BufNewFile *.tsx set filetype=typescript
 
-let g:formatdef_custom_cpp = '"clang-format -style=Google"'
+let g:formatdef_custom_cpp = '"clang-format -style=file"'
 let g:formatdef_custom_html = '"prettier --print-width=100 --parser=html"'
 let g:formatdef_custom_java = '"prettier --print-width=100 --parser=java"'
 let g:formatdef_custom_javascript = '"prettier --print-width=100 --parser=typescript"'
 let g:formatdef_custom_json = '"prettier --print-width=100 --parser=json"'
-let g:formatdef_custom_python = '"black -q --fast -"'
+let g:formatdef_custom_python = '"black -l 100 -q --fast -"'
 let g:formatdef_custom_ruby = '"prettier --print-width=100 --parser=ruby"'
+let g:formatdef_custom_yaml = '"prettier --print-width=100 --parser=yaml"'
 let g:formatters_c = ['custom_cpp']
 let g:formatters_cpp = ['custom_cpp']
 let g:formatters_html = ['custom_html']
@@ -107,25 +92,22 @@ let g:formatters_proto = []
 let g:formatters_python = ['custom_python']
 let g:formatters_ruby = ['custom_ruby']
 let g:formatters_typescript = ['custom_javascript']
+let g:formatters_yaml = ['custom_yaml']
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 au BufWrite * :Autoformat
 
-" expand tabs to 4 spaces
-set shiftwidth=4
-set tabstop=4
+" expand tabs to 2 spaces
+set shiftwidth=2
+set tabstop=2
 set smarttab
 set expandtab
 
-" except 2 spaces for some formats
-autocmd Filetype css setlocal expandtab tabstop=2 shiftwidth=2
-autocmd Filetype html setlocal expandtab tabstop=2 shiftwidth=2
-autocmd Filetype java setlocal expandtab tabstop=2 shiftwidth=2
-autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2
-autocmd Filetype scss setlocal expandtab tabstop=2 shiftwidth=2
-autocmd Filetype typescript setlocal expandtab tabstop=2 shiftwidth=2
-autocmd Filetype xml setlocal expandtab tabstop=2 shiftwidth=2
-autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2
+" except 4 spaces for some formats
+autocmd Filetype groovy setlocal expandtab tabstop=4 shiftwidth=4
+autocmd Filetype markdown setlocal expandtab tabstop=4 shiftwidth=4
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
+autocmd Filetype rust setlocal expandtab tabstop=4 shiftwidth=4
 
 " omg folding is the worst
 set nofoldenable
@@ -164,8 +146,9 @@ endif
 
 " font options
 set background=dark
-set t_Co=256
-colorscheme smyck
+set termguicolors
+let g:sonokai_style = 'atlantis'
+colorscheme sonokai
 
 " keep at least 5 lines below the cursor
 set scrolloff=5
@@ -222,7 +205,6 @@ nnoremap <leader>g <C-w><C-]><C-w>T
 nnoremap <leader>G <C-]>
 nnoremap <leader>h :tabnew<CR>:ConqueTerm bash<CR>
 nnoremap <leader>l :NERDTreeTabsToggle<CR>
-nnoremap <leader>k :CheckSyntax<CR>
 nnoremap <expr> <leader>o (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
 nnoremap <leader>p :set invpaste<CR>
 nnoremap <leader>t :tabnew<CR>
